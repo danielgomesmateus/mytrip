@@ -13,8 +13,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         val id = view.id
 
-        Toast.makeText(applicationContext, view.id, Toast.LENGTH_LONG).show()
-
         if (id == R.id.buttonCalculator) {
             handleCalculate()
         }
@@ -26,26 +24,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         setContentView(R.layout.activity_main)
 
         buttonCalculator.setOnClickListener(this)
-        editDistance.setOnClickListener(this)
     }
 
     private fun handleCalculate() {
 
-        if (isValid()) {
-
-            try {
-
-            } catch (nfe: NumberFormatException) {
-                Toast.makeText(this, getString(R.string.campos_invalidos), Toast.LENGTH_LONG).show()
-            }
-
-        } else {
+        if (!(isValid())) {
             Toast.makeText(this, getString(R.string.campos_invalidos), Toast.LENGTH_LONG).show()
         }
     }
 
     private fun isValid(): Boolean {
-        return editDistance.text.toString() != ""
+        return editNome.text.toString() != ""
+                && editEmail.text.toString() != ""
+                && editDistance.text.toString() != ""
                 && editPrice.text.toString() != ""
                 && editAutonomy.text.toString() != ""
                 && editAutonomy.text.toString() != "0"
